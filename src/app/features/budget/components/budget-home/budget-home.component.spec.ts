@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { BudgetHomeComponent } from './budget-home.component';
+
+describe('BudgetHomeComponent', () => {
+  let component: BudgetHomeComponent;
+  let fixture: ComponentFixture<BudgetHomeComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ BudgetHomeComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(BudgetHomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
