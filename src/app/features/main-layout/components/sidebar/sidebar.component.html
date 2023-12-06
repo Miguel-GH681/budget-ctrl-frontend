@@ -1,0 +1,13 @@
+<div class="sidebar" id="side_nav">
+    <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+      <h1 class="fs-4">Budget Ctrl</h1>
+      <button displayMenuDirective class="btn close-btn px-1 py-0 text-white"><i class="bi bi-list"></i></button>
+    </div>
+    <ul class="list-unstyled px-2">
+      <li [routerLinkActive]="'active'"><a [routerLink]="'account'" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-speedometer2"></i>Dashboard</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'budget'" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-wallet"></i>Presupuestos</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'account'" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-journal-bookmark"></i>Cuentas</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'budget'" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-safe2"></i>Bancos</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'account'" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-graph-down"></i>Deudas</a></li>
+    </ul>
+  </div>

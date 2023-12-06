@@ -3,20 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MainLayoutModule } from './features/main-layout/main-layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidebarComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MainLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
