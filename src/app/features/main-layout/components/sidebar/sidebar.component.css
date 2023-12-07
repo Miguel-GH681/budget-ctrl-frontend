@@ -1,24 +1,29 @@
 #side_nav{
-    background: #000;
+    background: var(--background-color-grey);
     height: 100vh;
     width: 250px;
-    color: white;
-    transition: all 0.4s;
+    color: var(--string-color-red);
+    transition: all 0.2s;
   }
   
   .sidebar li.active{
-    background-color: white;
-    border-radius: 10px;
+    background-color: var(--selected-color-grey);
+    border-radius: 8px;
   }
   
   .sidebar li.active a{
-    color: black;
+    color: var(--string-color-red);
+    font-weight: 700;
   }
   
   .sidebar li a{
     color: white;
   }
   
+  .sidebar li a:hover{
+    font-weight: 700;
+  }
+
   @media(max-width: 767px){
     #side_nav{
       margin-left: -250px;
@@ -30,3 +35,9 @@
       margin-left: 0px;
     }
   }
+
+.header-box{
+  height: 130px;
+  border-bottom: solid var(--selected-color-grey) 5px;
+  background: url("https://res.cloudinary.com/deptrswzd/image/upload/v1701916695/night-landscape_pgm9xo.jpg");
+}

@@ -1,0 +1,5 @@
+.main-container{
+    height: calc(100vh - 50px);
+    background-color: var(--body-color-black);
+    color: white;
+}
