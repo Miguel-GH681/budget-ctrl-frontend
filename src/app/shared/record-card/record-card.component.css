@@ -1,0 +1,26 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.record-card{
+    padding: 0px;
+    /* width: 170px; */
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background-color: var(--selected-color-grey);
+}
+
+.record-card__header{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--background-color-grey);
+}
+
+.record-card__body{
+    padding: 5px;
+}

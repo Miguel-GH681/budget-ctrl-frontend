@@ -1,4 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Rubik:wght@400;500&display=swap');
+
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.components-container{
+    margin-top: 50px;
+    margin-left: 250px;
+}
+
+@media(max-width: 767px){
+    .components-container{
+        margin-left: 0;
+    }
 }

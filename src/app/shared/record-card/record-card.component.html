@@ -1,0 +1,18 @@
+<div class="record-card">
+    <div class="record-card__header">
+        <p>{{ account.name }}</p>
+    </div>
+    <div class="record-card__body">
+        <div class="container d-flex justify-content-between p-0">
+            <p>Monto: Q{{ account.amount }}</p>
+            <p>Consumido: Q{{ account.spent }}</p>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
+            <div class="progress-bar bg-danger" [ngStyle]="{'width': account.percentage + '%'}"></div>
+        </div>
+        <div class="container d-flex justify-content-between p-0">
+            <p>Transacciones: {{ account.quantity }}</p>
+            <p>Porcentaje: {{ account.percentage }}%</p>
+        </div>
+    </div>
+</div>
