@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Subscription } from 'rxjs';
 import { Account } from '../../interfaces/account.interface';
-import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
+import { ChartConfiguration } from 'chart.js';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalComponent } from 'src/app/shared/form-modal/form-modal.component';
+import { FormTemplate } from 'src/app/shared/interfaces/form-modal.interface';
 
 @Component({
   selector: 'app-account-home',
@@ -13,11 +16,11 @@ export class AccountHomeComponent implements OnInit {
 
   accountSuscriptor? : Subscription;
   accounts : Array<Account> = [];
-  expenseChartData! : ChartConfiguration<'pie'>['data'];
-  incomeChartData! : ChartConfiguration<'pie'>['data'];
+  expenseChartData? : ChartConfiguration<'pie'>['data'];
+  incomeChartData? : ChartConfiguration<'pie'>['data'];
+  formObject : Array<FormTemplate> = [];
 
-
-  constructor( private accountService : AccountService ) { }
+  constructor( private accountService : AccountService, private modalService : NgbModal ) { }
 
   ngOnInit(): void {
     this.getAccounts();
@@ -27,38 +30,55 @@ export class AccountHomeComponent implements OnInit {
     this.accountSuscriptor = this.accountService.getAccount().subscribe((result:Array<Account>)=>{
       this.accounts = result;
       console.log( this.accounts );
-      this.initCharts();
+      this.initChartsData();      
     });
   }
 
-  initCharts(){
-    this.expenseChartData = {
-      labels: this.accounts.filter(( n:Account )=> n.classification == 'P').map(( a:Account )=> a.name),
-      datasets: [
-        {
-          data: this.accounts.filter(( n:Account )=> n.classification == 'P').map(( a:Account )=> a.amount),
-          label: 'Series A',
-          borderColor: 'black',
-          backgroundColor: 'rgba(255,0,0,0.3)',
-        }
-      ],
-    }
+  initChartsData(){
+      this.expenseChartData = {
+        labels: this.accounts.filter(a => a.classification === 'P').map( t => t.name ),
+        datasets: [
+          {
+            data: this.accounts.filter(a => a.classification === 'P').map( t => t.amount),
+            label: 'Series A',
+            borderColor: 'black'
+          }
+        ],
+      }
 
-    this.incomeChartData = {
-      labels: this.accounts.filter(( n:Account )=> n.classification == 'A').map(( a:Account )=> a.name),
-      datasets: [
-        {
-          data: this.accounts.filter(( n:Account )=> n.classification == 'A').map(( a:Account )=> a.amount),
-          label: 'Series A',
-          borderColor: 'black',
-          backgroundColor: 'rgba(255,0,0,0.3)',
-        }
-      ],
-    }
+      this.incomeChartData = {
+        labels: this.accounts.filter(a => a.classification === 'A').map( t => t.name ),
+        datasets: [
+          {
+            data: this.accounts.filter(a => a.classification === 'A').map( t => t.amount ),
+            label: 'Series A',
+            borderColor: 'black'
+          }
+        ],
+      }
   }
 
-  public lineChartOptions: ChartOptions<'pie'> = {
-    responsive: true,
-  };
-  public lineChartLegend = false;
+  openModal(){
+    this.initFormObject();
+    const modal = this.modalService.open(FormModalComponent, { centered: true });
+    modal.componentInstance.formTemplate = this.formObject;
+  }
+
+  initFormObject(){
+    this.formObject = [{
+      name: 'Nombre',
+      inputType: 'text',
+      inputValue: ''
+    },
+    {
+      name: 'Valor',
+      inputType: 'numeric',
+      inputValue: ''
+    },
+    {
+      name: 'Clasificación',
+      inputType: 'radio',
+      inputValue: ''
+    }]
+  }
 }

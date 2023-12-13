@@ -1,26 +1,22 @@
 p{
     margin: 0;
     padding: 0;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+hr{
+    width: 88%;
+    margin: 0px 0px 5px 6%;
+}
+
+span{
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .record-card{
-    padding: 0px;
-    /* width: 170px; */
-    margin-bottom: 20px;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    background-color: var(--selected-color-grey);
-}
-
-.record-card__header{
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    text-align: center;
-    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
     background-color: var(--background-color-grey);
-}
-
-.record-card__body{
-    padding: 5px;
 }

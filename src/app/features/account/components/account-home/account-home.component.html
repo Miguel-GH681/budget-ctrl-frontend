@@ -1,23 +1,41 @@
 <div class="container-fluid main-container">
-    <div class="row">
+    <div class="row p-3">
+        <div class="col-auto">
+            <h3>Cuentas</h3>
+        </div>
+        <div class="col">
+            <div class="d-flex justify-content-end">
+                <div class="input-group ms-4" style="width: 150px;">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-3">
         <div class="col-md-6">
             <div class="chart-container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <h5>Gastos</h5>
+                        <hr>
                         <ul>
                             <li>Cuentas Totales: 9</li>
                             <li>Total Gastos: 9</li>
                             <li>Cuentas Totales: 9</li>
                         </ul>
                     </div>
-                    <div class="col-6">
-                        <canvas baseChart width="250" height="250"
-                            [type]="'pie'"
-                            [data]="expenseChartData"
-                            [options]="lineChartOptions"
-                            [legend]="lineChartLegend">
-                        </canvas>
+                    <div class="col-auto">
+                        <div class="chart-container__chart">
+                            <app-pie-chart [chartData]="expenseChartData"></app-pie-chart>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -25,23 +43,41 @@
         <div class="col-md-6">
             <div class="chart-container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <h5>Cuentas Positivas</h5>
+                        <hr>
+                        <ul>
+                            <li>Cuentas Totales: 9</li>
+                            <li>Total Gastos: 9</li>
+                            <li>Cuentas Totales: 9</li>
+                        </ul>
                     </div>
-                    <div class="col-6">
-                        <canvas baseChart width="250" height="250"
-                            [type]="'pie'"
-                            [data]="incomeChartData"
-                            [options]="lineChartOptions"
-                            [legend]="lineChartLegend">
-                        </canvas>
+                    <div class="col-auto">
+                        <div class="chart-container__chart">
+                            <app-pie-chart [chartData]="incomeChartData"></app-pie-chart>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row p-3">
-        <div class="col-md-4" *ngFor="let account of accounts">
+        <div class="col-auto">
+            <h3>Acciones</h3>
+        </div>
+        <div class="col">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-warning" (click)="openModal()">Crear</button>
+                  
+                <div class="input-group ms-4" style="width: auto;">
+                    <input type="text" class="form-control bg-dark" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@example.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-3">
+        <div class="col-md-4 p-0" *ngFor="let account of accounts">
             <app-record-card [account]="account"></app-record-card>
         </div>
     </div>

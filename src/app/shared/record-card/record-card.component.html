@@ -1,18 +1,25 @@
 <div class="record-card">
-    <div class="record-card__header">
-        <p>{{ account.name }}</p>
+    <div class="row justify-content-center">
+        <div class="col-auto p-1">
+            <p>{{ account.name }}</p>
+        </div>
     </div>
-    <div class="record-card__body">
-        <div class="container d-flex justify-content-between p-0">
-            <p>Monto: Q{{ account.amount }}</p>
-            <p>Consumido: Q{{ account.spent }}</p>
-        </div>
-        <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
-            <div class="progress-bar bg-danger" [ngStyle]="{'width': account.percentage + '%'}"></div>
-        </div>
-        <div class="container d-flex justify-content-between p-0">
-            <p>Transacciones: {{ account.quantity }}</p>
-            <p>Porcentaje: {{ account.percentage }}%</p>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-12 ps-3 pe-3">
+            <div class="container d-flex justify-content-between pt-1 pb-1">
+                <p>Monto: <span>Q{{ account.spent }}</span></p>
+                <p>Consumido <span>Q{{ account.amount }}</span></p>
+            </div>
+            <div class="container">
+                <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 3px">
+                    <div class="progress-bar progress-bar-striped bg-danger" [ngStyle]="{'width': account.percentage + '%'}"></div>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-between pt-1 pb-2">
+                <p>Transacciones: {{ account.quantity }}</p>
+                <p>Porcentaje: {{ account.percentage }}%</p>
+            </div>
         </div>
     </div>
 </div>

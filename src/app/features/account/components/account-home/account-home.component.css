@@ -4,15 +4,15 @@
 }
 
 .chart-container{
-    margin: 15px;
     padding: 15px;
-    height: auto;
-    width: 95%;
-    border-radius: 10px;
+    margin-bottom: 5px;
+    height: 180px;
+    width: 100%;
+    border-radius: 5px;
     background-color: var(--background-color-grey);
 }
 
 .chart-container__chart{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
