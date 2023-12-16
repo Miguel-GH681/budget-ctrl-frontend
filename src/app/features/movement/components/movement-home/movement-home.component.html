@@ -1,0 +1,27 @@
+<div class="container-fluid main-container">
+    <div class="row p-3">
+        <div class="col-auto">
+            <h3>Movimientos</h3>
+        </div>
+        <div class="col">
+            <div class="d-flex justify-content-end">
+                <div class="input-group ms-4" style="width: 150px;">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="row  p-3">
+        <div class="col-12">
+            <app-table [titles]="titles" [records]="tableObject" ></app-table>
+        </div>
+    </div>
+</div>

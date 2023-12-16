@@ -6,6 +6,7 @@ import { ChartConfiguration } from 'chart.js';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormModalComponent } from 'src/app/shared/form-modal/form-modal.component';
 import { FormTemplate } from 'src/app/shared/interfaces/form-modal.interface';
+import { NewAccount } from '../../interfaces/new-account.interface';
 
 @Component({
   selector: 'app-account-home',
@@ -19,6 +20,7 @@ export class AccountHomeComponent implements OnInit {
   expenseChartData? : ChartConfiguration<'pie'>['data'];
   incomeChartData? : ChartConfiguration<'pie'>['data'];
   formObject : Array<FormTemplate> = [];
+  newAccount : NewAccount = {name:'', amount:0, classification:''};
 
   constructor( private accountService : AccountService, private modalService : NgbModal ) { }
 
@@ -60,25 +62,44 @@ export class AccountHomeComponent implements OnInit {
 
   openModal(){
     this.initFormObject();
-    const modal = this.modalService.open(FormModalComponent, { centered: true });
+
+    const modal = this.modalService.open(FormModalComponent, {centered: true});
     modal.componentInstance.formTemplate = this.formObject;
+  
+    modal.result.then( ( res : Array<FormTemplate>) =>{
+        
+        this.newAccount.name = res[0].inputValue;
+        this.newAccount.amount = res[1].inputValue;
+        this.newAccount.classification = res[2].inputValue;
+        
+        this.accountSuscriptor?.unsubscribe();
+        this.accountService.postAccount(this.newAccount).then( resp => {
+          this.getAccounts();
+        });
+    }, error =>{
+      console.log(error);
+    });
   }
 
   initFormObject(){
     this.formObject = [{
       name: 'Nombre',
       inputType: 'text',
-      inputValue: ''
+      inputValue: 'Alimentacion'
     },
     {
       name: 'Valor',
       inputType: 'numeric',
-      inputValue: ''
+      inputValue: '678'
     },
     {
       name: 'Clasificación',
-      inputType: 'radio',
+      inputType: 'text',
       inputValue: ''
     }]
+  }
+
+  ngOnDestroy(){
+    this.accountSuscriptor?.unsubscribe();
   }
 }

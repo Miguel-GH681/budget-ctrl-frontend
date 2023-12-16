@@ -7,6 +7,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { FormModalComponent } from './form-modal/form-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { TableComponent } from './table/table.component';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     RecordCardComponent,
     ChartComponent,
     PieChartComponent,
-    FormModalComponent
+    FormModalComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { FormsModule } from '@angular/forms';
   exports: [
     RecordCardComponent,
     PieChartComponent,
-    FormModalComponent
+    FormModalComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }
