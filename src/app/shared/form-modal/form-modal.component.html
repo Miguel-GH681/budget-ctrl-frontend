@@ -20,6 +20,14 @@
                             <label for="formInput.name-{{i}}" class="form-label">{{ formInput.name }}</label>
                             <input type="number" class="form-control" id="formInput.name-{{i}}" name="formInput.name-{{i}}" [(ngModel)]="formInput.inputValue">
                         </ng-container>
+                        <ng-container *ngIf="formInput.inputType == 'select'">
+                            <label for="formInput.name-{{i}}" class="form-label">{{ formInput.name }}</label>
+                            <select class="form-select" id="formInput.name-{{i}}" name="formInput.name-{{i}}" [(ngModel)]="formInput.inputValue">
+                                <ng-container *ngFor="let option of formInput.inputOptions">
+                                    <option value="{{ option.option_value }}">{{ option.name }}</option>
+                                </ng-container>
+                            </select>
+                        </ng-container>
                     </div>
                 </div>
             </form>

@@ -18,7 +18,11 @@ export class AccountHomeComponent implements OnInit {
   accountSuscriptor? : Subscription;
   accounts : Array<Account> = [];
   expenseChartData? : ChartConfiguration<'pie'>['data'];
+  expenseAccounts : Array<number> = [];
+  totalExpenses : number = 0;
   incomeChartData? : ChartConfiguration<'pie'>['data'];
+  incomeAccounts : Array<number> = [];
+  totalIncomes : number = 0;
   formObject : Array<FormTemplate> = [];
   newAccount : NewAccount = {name:'', amount:0, classification:''};
 
@@ -31,7 +35,13 @@ export class AccountHomeComponent implements OnInit {
   getAccounts(){
     this.accountSuscriptor = this.accountService.getAccount().subscribe((result:Array<Account>)=>{
       this.accounts = result;
-      console.log( this.accounts );
+      
+      this.incomeAccounts = this.accounts.filter(a => a.classification === 'A').map( t => t.amount );
+      this.totalIncomes = this.incomeAccounts.reduce((a, b) => a + b, 0);
+
+      this.expenseAccounts = this.accounts.filter(a => a.classification === 'P').map( t => t.amount);
+      this.totalExpenses = this.expenseAccounts.reduce((a, b) => a + b, 0);
+
       this.initChartsData();      
     });
   }
@@ -41,7 +51,7 @@ export class AccountHomeComponent implements OnInit {
         labels: this.accounts.filter(a => a.classification === 'P').map( t => t.name ),
         datasets: [
           {
-            data: this.accounts.filter(a => a.classification === 'P').map( t => t.amount),
+            data: this.expenseAccounts,
             label: 'Series A',
             borderColor: 'black'
           }
@@ -52,7 +62,7 @@ export class AccountHomeComponent implements OnInit {
         labels: this.accounts.filter(a => a.classification === 'A').map( t => t.name ),
         datasets: [
           {
-            data: this.accounts.filter(a => a.classification === 'A').map( t => t.amount ),
+            data: this.incomeAccounts,
             label: 'Series A',
             borderColor: 'black'
           }
@@ -85,12 +95,12 @@ export class AccountHomeComponent implements OnInit {
     this.formObject = [{
       name: 'Nombre',
       inputType: 'text',
-      inputValue: 'Alimentacion'
+      inputValue: ''
     },
     {
       name: 'Valor',
       inputType: 'numeric',
-      inputValue: '678'
+      inputValue: ''
     },
     {
       name: 'Clasificación',

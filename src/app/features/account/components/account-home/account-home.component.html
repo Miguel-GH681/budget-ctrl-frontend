@@ -27,9 +27,8 @@
                         <h5>Gastos</h5>
                         <hr>
                         <ul>
-                            <li>Cuentas Totales: 9</li>
-                            <li>Total Gastos: 9</li>
-                            <li>Cuentas Totales: 9</li>
+                            <li>No. Cuentas: {{ expenseAccounts.length }}</li>
+                            <li>Total (Q): {{ totalExpenses }}</li>
                         </ul>
                     </div>
                     <div class="col-auto">
@@ -44,12 +43,11 @@
             <div class="chart-container">
                 <div class="row">
                     <div class="col">
-                        <h5>Cuentas Positivas</h5>
+                        <h5>Ingresos</h5>
                         <hr>
                         <ul>
-                            <li>Cuentas Totales: 9</li>
-                            <li>Total Gastos: 9</li>
-                            <li>Cuentas Totales: 9</li>
+                            <li>No. Cuentas: {{ incomeAccounts.length }}</li>
+                            <li>Total (Q): {{ totalIncomes }}</li>
                         </ul>
                     </div>
                     <div class="col-auto">
